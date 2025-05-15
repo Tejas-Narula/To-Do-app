@@ -1,0 +1,60 @@
+
+body{
+    margin: 0px;
+    background: black;
+}
+
+.app{
+    margin: 15px 15px 15px 15px;
+    background-color: rgb(39, 39, 39);
+    height: calc(100vh - 30px);
+    display: block;
+    position: relative;
+}
+
+.input{
+    position: absolute;
+    display: flex;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+    justify-content: space-between;
+    margin: 0px 10px;
+    
+}
+
+.taskInput{
+    border: none;
+    height: 35px;
+    width: 80%;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.taskInputBtn{
+    border: none;
+    padding: 0px;
+    height: 35px;
+    width: 15%;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.Tasks{
+    position: relative;
+    top: 10px;
+}
+
+.task{
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 3px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}

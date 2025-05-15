@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="text"><button>Add task</button>
+    <div class="app">
+        <div class="input">
+            <input type="text" class="js-taskInput taskInput" placeholder="Task">
+            <button class="js-taskInputBtn taskInputBtn">Add task</button>
+        </div>
 
+        <div class="js-Tasks Tasks"></div>
 
-    
-    <script src="main.js"></script>
+        <script src="main.js"></script>
+    </div>
 </body>
 </html>
