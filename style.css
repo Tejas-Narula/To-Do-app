@@ -12,6 +12,10 @@ body{
     position: relative;
 }
 
+.app *{
+    margin: 0px 10px;
+}
+
 .input{
     position: absolute;
     display: flex;
@@ -46,15 +50,34 @@ body{
 
 .Tasks{
     position: relative;
-    top: 10px;
 }
 
 .task{
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 0px;
     border-radius: 3px;
     background: white;
     display: flex;
     justify-content: space-between;
     padding: 12px;
+    transition: transform 0.15s;
+}
+
+.task:hover{
+    transform: scale(1.02);
+
+}
+
+.checkBox{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.heading{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    color: white;
+    text-align: center;
 }

@@ -1,5 +1,5 @@
 // todo list
-const tasks = ["Exercise", "Walk"]
+const tasks = ["Exercise", "Walk", "gym", "Games"]
 renderTodoList()
 
 
@@ -7,7 +7,7 @@ renderTodoList()
 function renderTodoList(){
     let todoTasksHtml = ''
     tasks.forEach(task => {
-        html = `<div class="task">${task} <input type="checkbox" class="js-checkBox"></div>`
+        html = `<div class="task">${task} <input type="checkbox" class="js-checkBox checkBox"></div>`
         todoTasksHtml += html
     });
 
