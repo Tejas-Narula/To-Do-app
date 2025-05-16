@@ -1,13 +1,15 @@
 
+/* Main Page Styles*/
 body{
     margin: 0px;
     background: black;
 }
 
 .app{
-    margin: 15px 15px 15px 15px;
+    --space: 15px;
+    margin: var(--space);
     background-color: rgb(39, 39, 39);
-    height: calc(100vh - 30px);
+    height: calc(100vh - var(--space)*2);
     display: block;
     position: relative;
 }
@@ -80,4 +82,25 @@ body{
     padding-top: 10px;
     color: white;
     text-align: center;
+}
+
+
+/* Star Checkboc*/
+
+.starCheckBox{
+    display: none;
+}
+
+.starLabel{
+    font-size: 40px;
+    color: gray;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.1s;
+}
+
+.starCheckBox:checked + .starLabel{
+
+    color: gold;
+    
 }
