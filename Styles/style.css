@@ -20,7 +20,7 @@ body{
 }
 
 .app{
-    --inputHeight: 90px;
+    --inputHeight: 70px;
     --space: 15px;
     margin: var(--space);
     background-color: rgb(39, 39, 39);
@@ -46,12 +46,14 @@ body{
     right: 0px;
     bottom: 0px;
     height: var(--inputHeight);
-    padding: 0px 20px;
+    padding: 0px 10px;
+    
+    z-index: 101;
+    /*background-color: rgba(34, 51, 46, 0.978);
     justify-content: space-between;
-    margin: 0px 0px;
-    z-index: 100;
-    background-color: rgba(34, 51, 46, 0.978);
+    */
     align-items: center;
+    
     
 }
 
@@ -62,24 +64,25 @@ body{
 }
 
 
-
-.taskInput{
+.taskInputBtn{
     border: none;
     height: 35px;
     width: 80%;
     border-radius: 5px;
-    padding-left: 10px;
-    font-size: 16px;
+    cursor: pointer;
+    margin-inline: auto;
+    font-weight: 700;
+    background-color: rgb(232, 62, 19);
+    color: white;
+    transition: all 0.1s;
 }
 
-.taskInputBtn{
-    border: none;
-    padding: 0px;
-    height: 35px;
-    width: 15%;
-    border-radius: 5px;
-    margin-right: 5px;
-    cursor: pointer;
+.taskInputBtn:hover{
+    background-color: rgb(230, 74, 35);
+}
+
+.taskInputBtn:active{
+    background-color:  rgb(229, 93, 59);
 }
 
 .Tasks{
@@ -90,7 +93,7 @@ body{
     cursor: pointer;
     margin: 10px 0px;
     border-radius: 3px;
-    background: white;
+    background: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     padding: 5px;
@@ -113,7 +116,7 @@ body{
     margin-top: 0px;
     margin-bottom: 5px;
     padding-top: 10px;
-    color: white;
+    color: rgb(211,211,211);
     text-align: center;
 }
 
@@ -124,3 +127,97 @@ body{
 }
 
 
+
+/*Add Task Pop Up*/
+
+.addTaskPopUp {
+    position: fixed;
+    background-color: #154163;
+    border: 2px rgb(211,211,211) solid;
+    border-radius: 10px;
+    height: 170px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 102;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateY( 100%); /* Center X, push off bottom */
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.addTaskPopUpShow {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+.taskInputDiv{
+    padding: 10px;
+}
+
+.taskInput, .taskInputDesc{
+    display: block;
+    margin: 0 auto;
+    border: none;
+    
+    width: 90%;
+    border-radius: 5px;
+    padding: 0px 0px 0px 10px;
+    margin: 0px 0px 10px 0px;
+    color: black;
+    margin-inline: auto;
+    
+}
+
+.taskInput::placeholder, .taskInputDesc::placeholder{
+    font-weight: 530;
+    text-align: center;
+}
+
+.taskInputDesc::placeholder{
+    font-size: 15px;
+}
+
+.taskInput{
+    font-size: 14px;
+    margin-top: 4px;
+    height: 30px;
+    
+}
+
+.taskInputDesc{
+    height: 50px;
+    overflow:hidden;
+    resize: none;
+}
+
+
+.taskInputRow3{
+    padding: 0px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskInputRow3 *{
+    border: none;
+    padding: 10px 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.inputDateBtn{
+    padding-inline: 30px;
+}
+
+.repeatInputBtn{
+    padding-inline: 30px;
+}
+
+.addTaskConfirm{
+    width: 50%;
+    background-color: rgb(58, 153, 76);
+    
+}
