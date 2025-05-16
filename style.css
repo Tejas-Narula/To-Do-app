@@ -61,12 +61,13 @@ body{
     background: white;
     display: flex;
     justify-content: space-between;
-    padding: 12px;
+    padding: 5px;
     transition: transform 0.15s;
+    align-items: center;
 }
 
 .task:hover{
-    transform: scale(1.02);
+    transform: scale(1.01);
 
 }
 
@@ -84,6 +85,12 @@ body{
     text-align: center;
 }
 
+.checkBoxes{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
 
 /* Star Checkboc*/
 
@@ -92,11 +99,16 @@ body{
 }
 
 .starLabel{
-    font-size: 40px;
-    color: gray;
+    font-size: 35px;
+    color: rgb(216, 216, 216);
     cursor: pointer;
     user-select: none;
     transition: color 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -3px;
 }
 
 .starCheckBox:checked + .starLabel{

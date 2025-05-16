@@ -1,5 +1,5 @@
 // todo list
-const tasks = ["Exercise", "Walk", "gym", "Games"]
+const tasks = [{name :"Exercise", description: '', stared: false, completed: false}]
 
 renderTodoList()
 
@@ -7,15 +7,19 @@ renderTodoList()
 // render todo list by creating the html and putting it on the page
 function renderTodoList(){
     let todoTasksHtml = ''
-    tasks.forEach((task, index) => {
+    const sortedTasks = tasks.sort((a,b)=>{return b.stared-a.stared})
+    console.log(sortedTasks)
+    sortedTasks.forEach((task, index) => {
         html = `
             <div class="task">
-                <p>${task}</p>
+                <p>${task.name}</p>
 
-                <div>
-                    <input type="checkbox" id="starcheckbox${index+1}" class="starCheckBox">
-                    <label for="starcheckbox${index+1}" class="starLabel">&#9733;</label> 
-                    <input type="checkbox" class="js-checkBox checkBox">
+                <div class = "checkBoxes">
+                    <input type="checkbox" id="starcheckbox${index+1}" class="starCheckBox" ${task.stared ? "checked" : ""}>
+                    <label for="starcheckbox${index+1}" class="starLabel">${task.stared ? "&#x2605" : "&#x2606;"}</label> 
+
+
+                    <input type="checkbox" class="js-checkBox checkBox" ${task.completed ? "checked" : ""}>
                 </div>
             </div>
             `
@@ -27,19 +31,16 @@ function renderTodoList(){
     //checkbox
     document.querySelectorAll(".js-checkBox").forEach((checkbox, index) =>{
         checkbox.addEventListener("change", () => {
-        if (checkbox.checked){
-            tasks.splice(index,1)
+            tasks[index].completed = checkbox.checked;
             renderTodoList()
-        }
     })
     })
 
     //Star checkBox
     document.querySelectorAll(".starCheckBox").forEach((checkbox, index)=>{
         checkbox.addEventListener("change", ()=>{
-            if (checkbox.checked){
-                staredTaks.push()
-            }
+            tasks[index].stared = checkbox.checked
+            renderTodoList()
         })
     })
 
@@ -59,7 +60,9 @@ document.querySelector(".js-taskInputBtn").addEventListener("click", () =>{
 function addTask(){
     const taskInput = document.querySelector('.js-taskInput');
 
-    const task = taskInput.value;
+    const taskName = taskInput.value
+
+    const task = {name :taskInput.value, description: '', stared: false, completed: false};
 
     tasks.push(task);  
 
