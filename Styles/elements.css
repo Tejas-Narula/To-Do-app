@@ -1,0 +1,47 @@
+/* Task Info Btn --- not used*/ 
+
+.moreInfoBtn{
+    display: none; /* not used*/
+    height: 40px;
+    margin: 0px 5px;
+}
+
+.dot{
+    height: 10px;
+}
+
+.moreInfoBtn:hover{
+    color: rgb(12, 80, 114);
+}
+
+/* Star Checkboc*/
+
+.starCheckBox{
+    display: none;
+}
+
+.starLabel{
+    height: 40px;
+    margin: 0px 5px;
+    font-size: 37px;
+    color: rgb(152, 152, 152);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -3px;
+    font-weight: bolder;
+}
+
+.starLabel:hover{
+    color: black;
+}
+
+.starCheckBox:checked + .starLabel{
+
+    color: gold;
+    
+}

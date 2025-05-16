@@ -17,14 +17,23 @@ function renderTodoList(){
     sortedTasks.forEach((task, index) => {
         html = `
             <div class="task">
-                <p>${task.name}</p>
+                <div class="taskInfo">
+                    <input type="checkbox" class="js-checkBox checkBox" ${task.completed ? "checked" : ""}>
+
+                    <p>${task.name}</p>
+                    
+                </div>
 
                 <div class = "checkBoxes">
                     <input type="checkbox" id="starcheckbox${index+1}" class="starCheckBox" ${task.stared ? "checked" : ""}>
-                    <label for="starcheckbox${index+1}" class="starLabel">${task.stared ? "&#x2605" : "&#x2606;"}</label> 
+                    <label for="starcheckbox${index+1}" class="starLabel">${task.stared ? "&#x2605" : "&#x2606;"}</label>
 
-
-                    <input type="checkbox" class="js-checkBox checkBox" ${task.completed ? "checked" : ""}>
+                    <div class="moreInfoBtn">
+                        <div class="dot">&#9679;</div>
+                        <div class="dot">&#9679;</div>
+                        <div class="dot">&#9679;</div>
+                    </div>
+                    
                 </div>
             </div>
             `
