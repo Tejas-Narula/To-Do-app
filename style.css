@@ -1,11 +1,26 @@
+/*Scroll bar*/
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: rgb(39, 39,39);
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgb(100,100,100);
+    border-radius: 5px;
+}
 
 /* Main Page Styles*/
 body{
     margin: 0px;
-    background: black;
+    background: rgb(34, 34, 34);
 }
 
 .app{
+    --inputHeight: 90px;
     --space: 15px;
     margin: var(--space);
     background-color: rgb(39, 39, 39);
@@ -14,7 +29,13 @@ body{
     position: relative;
 }
 
-.app *{
+
+.app-content{
+    height: calc(100% - var(--inputHeight));
+    overflow-y: auto;
+}
+
+.app-content *{
     margin: 0px 10px;
 }
 
@@ -24,12 +45,17 @@ body{
     left: 0px;
     right: 0px;
     bottom: 0px;
-    margin: 0px;
-    padding: 0px;
+    height: var(--inputHeight);
+    padding: 0px 20px;
     justify-content: space-between;
-    margin: 0px 10px;
+    margin: 0px 0px;
+    z-index: 100;
+    background-color: rgba(34, 51, 46, 0.978);
+    align-items: center;
     
 }
+
+
 
 .taskInput{
     border: none;

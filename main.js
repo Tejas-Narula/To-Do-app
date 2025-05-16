@@ -1,3 +1,8 @@
+const taskInput = document.querySelector('.js-taskInput');
+const taskInputBtn = document.querySelector('.taskInputBtn')
+
+
+
 // todo list
 const tasks = [{name :"Exercise", description: '', stared: false, completed: false}]
 
@@ -50,15 +55,15 @@ function renderTodoList(){
 
 
 
-
-
 // Add Task Button
-document.querySelector(".js-taskInputBtn").addEventListener("click", () =>{
+taskInputBtn.addEventListener("click", () =>{
     addTask();
+    taskInput.focus()
+    
 })
 
 function addTask(){
-    const taskInput = document.querySelector('.js-taskInput');
+    
 
     const taskName = taskInput.value
 
