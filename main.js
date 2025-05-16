@@ -72,15 +72,41 @@ taskInputBtn.addEventListener("click", () =>{
 })
 
 function addTask(){
-    
+    const taskPopUp = document.querySelector('.addTaskPopUp')
+    taskPopUp.classList.add('addTaskPopUpShow')
+}
 
+const taskPopUp = document.querySelector('.addTaskPopUp');
+
+// Detect outside clicks
+document.addEventListener('click', function(event) {
+    const isPopUpOpen = taskPopUp.classList.contains('addTaskPopUpShow');
+    const clickedInsidePopUp = taskPopUp.contains(event.target);
+    const clickedButton = taskInputBtn.contains(event.target);
+
+    if (isPopUpOpen && !clickedInsidePopUp && !clickedButton) {
+        hideInputPopUp()
+    }
+});
+
+function hideInputPopUp(){
+    taskPopUp.classList.remove('addTaskPopUpShow')
+}
+
+
+//add Task
+
+const confirmAddTaskBtn = document.querySelector('.js-addTaskConfirm')
+
+confirmAddTaskBtn.addEventListener('click', ()=>{
     const taskName = taskInput.value
 
-    const task = {name :taskInput.value, description: '', stared: false, completed: false};
+    const task = {name :taskName, description: '', stared: false, completed: false};
 
     tasks.push(task);  
 
     taskInput.value = '';
 
+    hideInputPopUp()
     renderTodoList()
-}
+})

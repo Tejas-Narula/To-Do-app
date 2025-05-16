@@ -10,13 +10,29 @@
 <body>
     <div class="app">
         <div class="input">
-            <input type="text" class="js-taskInput taskInput" placeholder="Task">
+            
+            <!--<input type="text" class="js-taskInput taskInput" placeholder="Task"> -->
+
             <button class="js-taskInputBtn taskInputBtn">Add task</button>
         </div>
     
         <div class="app-content">
             <h1 class="heading">To Do List</h1>
             <div class="js-Tasks Tasks"></div>
+        </div>
+
+        <div class="addTaskPopUp">
+            <div class="taskInputDiv">
+                <input type="text" class="js-taskInput taskInput" placeholder="Task">
+
+                <textarea type="text" class="taskInputDesc" placeholder="Description" maxlength="100" rows="10"></textarea>
+            </div>
+            <div class="taskInputRow3">
+                
+                <input type="date" class="inputDateBtn">
+                <button class="repeatInputBtn">Repeat</button>
+                <button class="js-addTaskConfirm addTaskConfirm">Add Task</button>
+            </div>
         </div>
         
 
