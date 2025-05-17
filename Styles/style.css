@@ -132,24 +132,23 @@ body{
 
 .addTaskPopUp {
     position: fixed;
-    background-color: #154163;
+    background-color: rgb(39, 39, 39);
     border: 2px rgb(211,211,211) solid;
     border-radius: 10px;
     height: 170px;
-    left: 0px;
-    right: 0px;
+    width: calc(100% - 35px);
     bottom: 0px;
     z-index: 102;
     transform: translateY(100%);
     opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     transform: translateY( 100%); /* Center X, push off bottom */
     opacity: 0;
     transition: transform 0.5s, opacity 0.5s;
 }
 
 .addTaskPopUpShow {
-    transform: translateY(0%);
+    transform: translateY(-10%);
     opacity: 1;
 }
 

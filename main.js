@@ -1,19 +1,41 @@
 const taskInput = document.querySelector('.js-taskInput');
-const taskInputBtn = document.querySelector('.taskInputBtn')
+const addTaskBtn = document.querySelector('.taskInputBtn')
 
 
 
 // todo list
-const tasks = [{name :"Exercise", description: '', stared: false, completed: false}]
+const tasks = [{name :"Exercise", description: '', stared: false, completed: false},{name :"Gym", description: '', stared: false, completed: false},{name :"Walk", description: '', stared: true, completed: false}]
+
+
 
 renderTodoList()
+
+function removeElements(arr1, arr2) {
+  return arr1.filter(element => !arr2.includes(element));
+}
 
 
 // render todo list by creating the html and putting it on the page
 function renderTodoList(){
     let todoTasksHtml = ''
-    const sortedTasks = tasks.sort((a,b)=>{return b.stared-a.stared})
+    const completedTasks = [];
+
+    tasks.forEach((task, index) => {
+        if (task.completed){
+            completedTasks.push(task)
+            console.log(completedTasks)
+            return
+        }
+    })
+
+
+
+    let sortedTasks = tasks.sort((a,b)=>{return b.stared-a.stared})
+
+    sortedTasks = removeElements(sortedTasks, completedTasks);
+
     sortedTasks.forEach((task, index) => {
+        
         html = `
             <div class="task">
                 <div class="taskInfo">
@@ -41,10 +63,10 @@ function renderTodoList(){
 
     document.querySelector(".js-Tasks").innerHTML = todoTasksHtml
 
-    //checkbox
+    //Compleyed Task checkbox
     document.querySelectorAll(".js-checkBox").forEach((checkbox, index) =>{
         checkbox.addEventListener("change", () => {
-            tasks[index].completed = checkbox.checked;
+            sortedTasks[index].completed = checkbox.checked;
             renderTodoList()
     })
     })
@@ -52,7 +74,7 @@ function renderTodoList(){
     //Star checkBox
     document.querySelectorAll(".starCheckBox").forEach((checkbox, index)=>{
         checkbox.addEventListener("change", ()=>{
-            tasks[index].stared = checkbox.checked
+            sortedTasks[index].stared = checkbox.checked
             renderTodoList()
         })
     })
@@ -64,7 +86,7 @@ function renderTodoList(){
 
 
 // Add Task Button
-taskInputBtn.addEventListener("click", () =>{
+addTaskBtn.addEventListener("click", () =>{
     addTask();
     taskInput.focus()
     
@@ -81,7 +103,7 @@ const taskPopUp = document.querySelector('.addTaskPopUp');
 document.addEventListener('click', function(event) {
     const isPopUpOpen = taskPopUp.classList.contains('addTaskPopUpShow');
     const clickedInsidePopUp = taskPopUp.contains(event.target);
-    const clickedButton = taskInputBtn.contains(event.target);
+    const clickedButton = addTaskBtn.contains(event.target);
 
     if (isPopUpOpen && !clickedInsidePopUp && !clickedButton) {
         hideInputPopUp()
