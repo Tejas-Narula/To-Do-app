@@ -13,6 +13,8 @@
     border-radius: 5px;
 }
 
+
+
 /* Main Page Styles*/
 body{
     margin: 0px;
@@ -39,6 +41,7 @@ body{
     margin: 0px 10px;
 }
 
+/*add task Button(input)*/
 .input{
     position: absolute;
     display: flex;
@@ -57,6 +60,7 @@ body{
     
 }
 
+/*tasks*/
 .taskInfo{
     display: flex;
     justify-content: center;
