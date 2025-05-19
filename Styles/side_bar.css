@@ -1,0 +1,108 @@
+/*Side bar opener ie:- burger*/
+
+.burger{
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger.showSideBar{
+    position: fixed;
+    left: calc(var(--space) + 13px);
+    z-index: 1000;
+    transform: translateY(4px);
+}
+.burger-row{
+    background-color: white;
+    height: 4px;
+    width: 100%;
+    margin: 3px 0;
+}
+
+
+.sideBar{
+    display: block;
+    position: fixed;
+    width: var(--sideBarWidth);
+    height: calc(100vh - var(--space)*2);
+    background-color: #19191a;
+    z-index: 1000;
+    left: -240px;
+}
+
+.sideBar.show{
+    transform: translateX(calc(var(--sideBarWidth) + var(--space)));
+}
+
+.sideBarHeader{
+    color: white;
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.addList{
+    position: absolute;
+    display: flex;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    align-items: center;
+    padding: 10px 0px;
+
+}
+
+.addList button{
+    border: none;
+    height: 25px;
+    width: 95%;
+    cursor: pointer;
+    margin-inline: auto; 
+    font-weight: 700;
+    background-color: transparent;
+    color: white;
+    border-top: rgb(123, 123, 123) 1px solid;
+    border-bottom: rgb(123, 123, 123) 1px solid;
+    transition: all 0.1s;
+}
+
+.addList button:hover{
+    background-color:rgba(255, 255, 255, 0.05)
+}
+
+.addList button:active{
+    background-color:rgba(255, 255, 255, 0.02)
+}
+
+
+/*Lists in the sidebar*/
+
+.lists{
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    left: 0px;
+    right: 0px;
+    margin: 5px 10px;
+}
+
+.list{
+    color: white;
+    padding: 7px 10px;
+}
+
+.list:hover{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.list p{
+    margin: 0px 0px;
+}

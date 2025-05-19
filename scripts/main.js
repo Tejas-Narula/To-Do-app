@@ -1,4 +1,3 @@
-const taskInput = document.querySelector('.js-taskInput');
 const addTaskBtn = document.querySelector('.taskInputBtn')
 
 
@@ -48,6 +47,7 @@ function renderTodoList(){
 
                 <div class = "checkBoxes">
                     <input type="checkbox" id="starcheckbox${index+1}" class="starCheckBox" ${task.stared ? "checked" : ""}>
+                    
                     <label for="starcheckbox${index+1}" class="starLabel">${task.stared ? "&#x2605" : "&#x2606;"}</label>
 
                     <div class="moreInfoBtn">

@@ -2,12 +2,26 @@ function hideInputPopUp(){
     taskPopUp.classList.remove('addTaskPopUpShow')
 }
 
+const taskInput = document.querySelector('.js-taskInput');
+
 
 //add Task - popup
 
 const confirmAddTaskBtn = document.querySelector('.js-addTaskConfirm')
 
+taskInput.addEventListener('keydown', (event)=>{
+    if (event.key === 'Enter'){
+        confirmAddTask()
+        renderTodoList()
+    }
+})
+
 confirmAddTaskBtn.addEventListener('click', ()=>{
+    confirmAddTask()
+    renderTodoList()
+})
+
+function confirmAddTask(){
     const taskName = taskInput.value
 
     const task = {name :taskName, description: '', stared: false, completed: false};
@@ -17,8 +31,7 @@ confirmAddTaskBtn.addEventListener('click', ()=>{
     taskInput.value = '';
 
     hideInputPopUp()
-    renderTodoList()
-})
+}
 
 
 // Detect outside clicks

@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
+    <link rel="stylesheet" href="Styles/side_bar.css">
     <link rel="stylesheet" href="Styles/style.css">
     <link rel="stylesheet" href="Styles/elements.css">
+    
 </head>
 <body>
+    <div class="js-sideBar sideBar">
+            <p class="sideBarHeader">Lists</p>
+            <div class="lists">
+                <div class="list">
+                    <p>list1</p>
+                </div>
+                <div class="list">
+                    <p>lis2</p>
+                </div>
+                <div class="list">
+                    <p>lis3</p>
+                </div>
+            </div>
+
+
+            <div class="addList">
+                <button>Add List <b>+</b></button>
+            </div>
+        </div>
+
+
     <div class="app">
         <div class="input">
             <button class="js-taskInputBtn taskInputBtn">Add task</button>
@@ -27,10 +50,18 @@
             </div>
         </div>
         
+        
 
 
         <div class="app-content">
-            <h1 class="heading">To Do List</h1>
+            <div class="heading">
+                <div class="js-burger burger">
+                    <div class="burger-row"></div>
+                    <div class="burger-row"></div> 
+                    <div class="burger-row"></div>
+                </div>
+                <input value="To Do List" type="text" maxlength="15">
+            </div>
             <div class="js-Tasks Tasks"></div>
         </div>
         
