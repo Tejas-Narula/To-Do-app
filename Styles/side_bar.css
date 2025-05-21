@@ -95,6 +95,8 @@
 .list{
     color: white;
     padding: 7px 10px;
+    user-select: none;
+    cursor: pointer;
 }
 
 .list:hover{
@@ -104,5 +106,5 @@
 }
 
 .list p{
-    margin: 0px 0px;
+    margin: 0;
 }

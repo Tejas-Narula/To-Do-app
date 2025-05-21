@@ -129,7 +129,7 @@ body.showSideBar{
     cursor: pointer;
 }
 
-.heading{
+.header{
     display: flex;
     margin-top: 0px;
     margin-bottom: 5px;
@@ -139,7 +139,7 @@ body.showSideBar{
     
 }
 
-.heading input{
+.header input{
     color: rgb(211,211,211);
     text-align: right;
     margin: 0px 0px;

@@ -1,36 +1,59 @@
 const addTaskBtn = document.querySelector('.taskInputBtn')
-
-
+const heading = document.querySelector('.js-heading')
 
 // todo list
-const tasks = [{name :"Exercise", description: '', stared: false, completed: false},{name :"Gym", description: '', stared: false, completed: false},{name :"Walk", description: '', stared: true, completed: false}]
+const lists = [{heading: "Daily", tasks: [{name :"Exercise", description: '', stared: false, completed: false},{name :"Gym", description: '', stared: false, completed: false},{name :"Walk", description: '', stared: true, completed: false}]},
+{heading: "Masti Plan", tasks: [{name :"mazeee", description: '', stared: false, completed: false}]
+}]
+
+let activeList
+setActiveList(0)
+
+function setActiveList(index){
+    activeList = lists[index]
+}
 
 
 
-renderTodoList()
+
+
+
+function renderSideBar(){
+    let sideBarListsHtml = ''
+    lists.forEach((list, index) =>{
+        html = `<div class="list" onClick="setActiveList('${index}'); renderTodoList()"> <p>${list.heading}</p> </div>`
+        sideBarListsHtml += html
+    })
+
+    document.querySelector('.lists').innerHTML = sideBarListsHtml
+    
+}
+renderSideBar()
+
+
+
+
 
 function removeElements(arr1, arr2) {
   return arr1.filter(element => !arr2.includes(element));
 }
 
-
+renderTodoList()
 // render todo list by creating the html and putting it on the page
 function renderTodoList(){
+    heading.value = activeList.heading
     let todoTasksHtml = ''
     const completedTasks = [];
 
     //Add Completed Tasks to its list for future rendering in a superate area
-    tasks.forEach((task, index) => {
+    activeList.tasks.forEach((task) => {
         if (task.completed){
             completedTasks.push(task)
-            console.log(completedTasks)
             return
         }
     })
 
-
-
-    let sortedTasks = tasks.sort((a,b)=>{return b.stared-a.stared})
+    let sortedTasks = activeList.tasks.sort((a,b)=>{return b.stared-a.stared})
     sortedTasks = removeElements(sortedTasks, completedTasks); //ordering the starred tasks first
 
     sortedTasks.forEach((task, index) => {
@@ -106,3 +129,42 @@ function addTask(){
 
 const taskPopUp = document.querySelector('.addTaskPopUp');
 
+
+//add List
+
+const addListBtn = document.querySelector('.addList')
+addListBtn.addEventListener('click', ()=>{
+    addList()
+})
+
+function addList(){
+    const list = {heading: 'UnNamed', tasks: []}
+    lists.push(list)
+    setActiveList(lists.length -1)
+    
+    
+
+    renderTodoList()
+    renderSideBar()
+
+    heading.focus()
+    heading.select()
+}
+
+
+heading.addEventListener('input', (event)=>{
+    activeList.heading = heading.value
+    renderSideBar()
+})
+
+heading.addEventListener('blur', () => {
+    if (heading.value === "" || heading.value === "UnNamed"){
+        activeList.heading = "UnNamed"
+        renderSideBar()
+        renderTodoList()
+    }
+});
+
+heading.addEventListener('focus', ()=>{
+    heading.select()
+})

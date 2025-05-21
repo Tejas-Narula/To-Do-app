@@ -26,7 +26,7 @@ function confirmAddTask(){
 
     const task = {name :taskName, description: '', stared: false, completed: false};
 
-    tasks.push(task);  
+    activeList.tasks.push(task);  
 
     taskInput.value = '';
 
