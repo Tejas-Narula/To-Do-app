@@ -5,16 +5,18 @@ This is a *mini project* I am creating while learning webdev to test my skills! 
 [View Project](https://tejas-narula.github.io/To-Do-app/)
 
 # Features
-- Add / Delete Task
+- Add Task
 - Create Multiple lists
 - faviorite / Pin tasks to top
-- Edit Tasks
-- Dark Themed
-
-# Up Comming Features
+- Edit heading
 - local Storage
 - Completed tasks archive
+
+# Up Comming Features
+
 - date / description / repeat functionality
+- Delete List / Task
+- Edit Task Info
 
 (maybe)
 - cloud Support

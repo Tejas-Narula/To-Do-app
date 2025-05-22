@@ -118,6 +118,15 @@ body.showSideBar{
     align-items: center;
 }
 
+.task.completed{
+    background-color: rgb(255, 255, 255, 0.3);
+    
+}
+
+.task.completed p{
+    text-decoration: line-through;
+}
+
 .task:hover{
     transform: scale(1.01);
 
@@ -149,9 +158,10 @@ body.showSideBar{
     border: none;
     width: 120px;
     font-size: 20px;
-    text-align: center;
-}
+    text-align: left;
+    padding: 2px 5px;
 
+}
 
 .checkBoxes{
     display: flex;

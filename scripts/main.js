@@ -2,13 +2,14 @@ const addTaskBtn = document.querySelector('.taskInputBtn')
 const heading = document.querySelector('.js-heading')
 
 // todo list
-const lists = [{heading: "Daily", tasks: [{name :"Exercise", description: '', stared: false, completed: false},{name :"Gym", description: '', stared: false, completed: false},{name :"Walk", description: '', stared: true, completed: false}]},
-{heading: "Masti Plan", tasks: [{name :"mazeee", description: '', stared: false, completed: false}]
-}]
+//const lists = [{heading: "Daily", tasks: [{name :"Exercise", description: '', stared: false, completed: false},{name :"Gym", description: '', stared: false, completed: false},{name :"Walk", description: '', stared: true, completed: false}]},{heading: "Masti Plan", tasks: [{name :"mazeee", description: '', stared: false, completed: false}]}]
+
+//setItem("lists", JSON.stringify(lists))
+
+const lists = JSON.parse(localStorage.getItem("lists"))||[{heading: "Default", showCompletedTasks: true,tasks: [{name :"Default Task", description: '', stared: true, completed: false}]} ];
 
 let activeList
 setActiveList(0)
-
 function setActiveList(index){
     activeList = lists[index]
 }
@@ -54,24 +55,29 @@ function renderTodoList(){
     })
 
     let sortedTasks = activeList.tasks.sort((a,b)=>{return b.stared-a.stared})
-    sortedTasks = removeElements(sortedTasks, completedTasks); //ordering the starred tasks first
+    sortedTasks = sortedTasks.sort((a,b)=>a.completed-b.completed)
 
-    sortedTasks.forEach((task, index) => {
+
+    //sortedTasks = removeElements(sortedTasks, completedTasks); //ordering the starred tasks first
+
+    //sortedTasks.forEach((task, index) => {
+    
+    for (let i = 0; i<sortedTasks.length; i++){
         
         //html for each task
         html = `
-            <div class="task">
+            <div class="task ${sortedTasks[i].completed ? "completed" : ""  }">
                 <div class="taskInfo">
-                    <input type="checkbox" class="js-checkBox checkBox" ${task.completed ? "checked" : ""}>
+                    <input type="checkbox" class="js-checkBox checkBox" ${ sortedTasks[i].completed ? "checked" : ""}>
 
-                    <p>${task.name}</p>
+                    <p>${sortedTasks[i].name}</p>
                     
                 </div>
 
                 <div class = "checkBoxes">
-                    <input type="checkbox" id="starcheckbox${index+1}" class="starCheckBox" ${task.stared ? "checked" : ""}>
+                    <input type="checkbox" id="starcheckbox${i+1}" class="starCheckBox" ${sortedTasks[i].stared ? "checked" : ""}>
                     
-                    <label for="starcheckbox${index+1}" class="starLabel">${task.stared ? "&#x2605" : "&#x2606;"}</label>
+                    <label for="starcheckbox${i+1}" class="starLabel">${sortedTasks[i].stared ? "&#x2605" : "&#x2606;"}</label>
 
                     <div class="moreInfoBtn">
                         <div class="dot">&#9679;</div>
@@ -82,13 +88,49 @@ function renderTodoList(){
                 </div>
             </div>
             ` 
+        
+        //line
+        if (i === sortedTasks.length-completedTasks.length){
+            todoTasksHtml += `
+            <div class="js-line line">
+            <div class="line-close js-line-close">${activeList.showCompletedTasks ? "&#9660;" : "&#9650;"}</div>
+            <div class="line-x"></div>
+            <p>Completed Tasks</p>
+            <div class="line-x"></div>
+            </div>`
+
+            if (!activeList.showCompletedTasks){
+                break
+        }
+        }
         todoTasksHtml += html
-    });
+    };
 
     document.querySelector(".js-Tasks").innerHTML = todoTasksHtml // putting the formed html on the page
 
     addEventListenerCheckBox(sortedTasks)
     addEventListenerStarCheckBox(sortedTasks)
+
+
+    localStorage.setItem("lists", JSON.stringify(lists))
+
+    //line between completed and non completed tasks
+    if (sortedTasks.length >= 1 && completedTasks.length > 0){
+        document.querySelector(".line").classList.toggle('show');
+        document.querySelectorAll(".line-x").forEach((line)=>{
+            line.classList.toggle('show')
+        })
+
+        //close/open completed tasks
+        document.querySelector('.js-line').addEventListener('click', ()=>{
+            activeList.showCompletedTasks = !activeList.showCompletedTasks
+            renderTodoList();
+        })
+    }
+
+    
+
+
 
 }
 
@@ -138,7 +180,7 @@ addListBtn.addEventListener('click', ()=>{
 })
 
 function addList(){
-    const list = {heading: 'UnNamed', tasks: []}
+    const list = {heading: 'UnNamed',showCompletedTasks: true, tasks: []}
     lists.push(list)
     setActiveList(lists.length -1)
     
@@ -160,11 +202,13 @@ heading.addEventListener('input', (event)=>{
 heading.addEventListener('blur', () => {
     if (heading.value === "" || heading.value === "UnNamed"){
         activeList.heading = "UnNamed"
+    }
         renderSideBar()
         renderTodoList()
-    }
 });
 
 heading.addEventListener('focus', ()=>{
     heading.select()
 })
+
+

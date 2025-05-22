@@ -45,3 +45,37 @@
     color: gold;
     
 }
+
+.line{
+    display: flex;
+    margin: 20px 10px 20px 0px;
+}
+
+.line p{
+    margin: 0;
+    width: 50%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.line-x{
+    display: none;
+    align-self: center;
+    justify-self: center;
+    width: 50%;
+    height: 2px;
+    background-color: white;
+
+}
+
+.line-x.show{
+    display: block;
+}
+
+.line-close{
+    padding: 0px 20px;
+    color: white;
+    cursor:pointer;
+    user-select: none;
+}
