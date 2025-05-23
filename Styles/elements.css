@@ -79,3 +79,21 @@
     cursor:pointer;
     user-select: none;
 }
+
+
+.trashBin{
+    font-size: 42px;
+    color: black;
+    font-weight: 100;
+    user-select: none;
+    padding: 0px 10px;
+    transform:  translateY(-2px);
+}
+
+.trashBin.red{
+    color: red;
+}
+
+.trashBinList{
+    font-size: 25px;
+}

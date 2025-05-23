@@ -5,7 +5,7 @@ This is a *mini project* I am creating while learning webdev to test my skills! 
 [View Project](https://tejas-narula.github.io/To-Do-app/)
 
 # Features
-- Add Task
+- Add/Delete Task
 - Create Multiple lists
 - faviorite / Pin tasks to top
 - Edit heading
@@ -15,7 +15,6 @@ This is a *mini project* I am creating while learning webdev to test my skills! 
 # Up Comming Features
 
 - date / description / repeat functionality
-- Delete List / Task
 - Edit Task Info
 
 (maybe)

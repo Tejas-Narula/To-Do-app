@@ -36,6 +36,8 @@ function confirmAddTask(){
 
 // Detect outside clicks
 document.addEventListener('click', function(event) {
+    if (taskPopUp !== undefined){
+
     const isPopUpOpen = taskPopUp.classList.contains('addTaskPopUpShow');
     const clickedInsidePopUp = taskPopUp.contains(event.target);
     const clickedButton = addTaskBtn.contains(event.target);
@@ -43,5 +45,6 @@ document.addEventListener('click', function(event) {
     if (isPopUpOpen && !clickedInsidePopUp && !clickedButton) {
         hideInputPopUp()
     }
+}
 });
 

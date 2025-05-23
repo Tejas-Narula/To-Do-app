@@ -6,7 +6,7 @@ const heading = document.querySelector('.js-heading')
 
 //setItem("lists", JSON.stringify(lists))
 
-const lists = JSON.parse(localStorage.getItem("lists"))||[{heading: "Default", showCompletedTasks: true,tasks: [{name :"Default Task", description: '', stared: true, completed: false}]} ];
+const lists = JSON.parse(localStorage.getItem("lists"))||[{"heading":"Daily","showCompletedTasks":true,"tasks":[{"name":"Gym","description":"","stared":true,"completed":false},{"name":"Study","description":"","stared":false,"completed":false},{"name":"Drink water","description":"","stared":false,"completed":true}]}];
 
 let activeList
 setActiveList(0)
@@ -22,11 +22,18 @@ function setActiveList(index){
 function renderSideBar(){
     let sideBarListsHtml = ''
     lists.forEach((list, index) =>{
-        html = `<div class="list" onClick="setActiveList('${index}'); renderTodoList()"> <p>${list.heading}</p> </div>`
+        html = `<div class="list" onClick="setActiveList('${index}'); renderTodoList()"> <p>${list.heading}</p><div class="js-trashBinList trashBinList">&#128465;</div> </div>`
         sideBarListsHtml += html
     })
 
     document.querySelector('.lists').innerHTML = sideBarListsHtml
+
+    document.querySelectorAll(".js-trashBinList").forEach((bin, index) =>{
+        bin.addEventListener("click", () => {
+            lists.splice(index,1)
+            renderSideBar()
+    })
+    })
     
 }
 renderSideBar()
@@ -38,10 +45,14 @@ renderSideBar()
 function removeElements(arr1, arr2) {
   return arr1.filter(element => !arr2.includes(element));
 }
-
+if (lists.length !== 0){
 renderTodoList()
+}
 // render todo list by creating the html and putting it on the page
 function renderTodoList(){
+    if (lists.length === 0){
+        return
+    }
     heading.value = activeList.heading
     let todoTasksHtml = ''
     const completedTasks = [];
@@ -84,6 +95,8 @@ function renderTodoList(){
                         <div class="dot">&#9679;</div>
                         <div class="dot">&#9679;</div>
                     </div>
+
+                    <div class="js-trashBin trashBin">&#128465;</div>
                     
                 </div>
             </div>
@@ -128,9 +141,12 @@ function renderTodoList(){
         })
     }
 
-    
-
-
+    document.querySelectorAll('.js-trashBin').forEach((bin, index)=>{
+        bin.addEventListener('click', ()=>{
+            activeList.tasks.splice(index, 1)
+            renderTodoList()
+        })
+    })
 
 }
 
@@ -180,7 +196,7 @@ addListBtn.addEventListener('click', ()=>{
 })
 
 function addList(){
-    const list = {heading: 'UnNamed',showCompletedTasks: true, tasks: []}
+    const list = {heading: `list #${lists.length+1}`,showCompletedTasks: true, tasks: []}
     lists.push(list)
     setActiveList(lists.length -1)
     
@@ -201,7 +217,7 @@ heading.addEventListener('input', (event)=>{
 
 heading.addEventListener('blur', () => {
     if (heading.value === "" || heading.value === "UnNamed"){
-        activeList.heading = "UnNamed"
+        activeList.heading = `list #${lists.length}`
     }
         renderSideBar()
         renderTodoList()
