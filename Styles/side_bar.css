@@ -94,6 +94,9 @@
 }
 
 .list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: white;
     padding: 7px 10px;
     user-select: none;
@@ -108,4 +111,5 @@
 
 .list p{
     margin: 0;
+    text-align: center;
 }

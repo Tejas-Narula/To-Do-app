@@ -93,3 +93,7 @@
 .trashBin.red{
     color: red;
 }
+
+.trashBinList{
+    font-size: 25px;
+}
