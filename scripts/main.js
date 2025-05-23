@@ -6,7 +6,7 @@ const heading = document.querySelector('.js-heading')
 
 //setItem("lists", JSON.stringify(lists))
 
-const lists = JSON.parse(localStorage.getItem("lists"))||[{heading: "Default", showCompletedTasks: true,tasks: [{name :"Default Task", description: '', stared: true, completed: false}]} ];
+const lists = JSON.parse(localStorage.getItem("lists"))||[{heading: "List #1", showCompletedTasks: true,tasks: [{name :"Task #1", description: '', stared: true, completed: false}]} ];
 
 let activeList
 setActiveList(0)
@@ -38,8 +38,10 @@ renderSideBar()
 function removeElements(arr1, arr2) {
   return arr1.filter(element => !arr2.includes(element));
 }
-
+console.log(lists)
+if (lists.length !== 0){
 renderTodoList()
+}
 // render todo list by creating the html and putting it on the page
 function renderTodoList(){
     heading.value = activeList.heading
@@ -84,6 +86,8 @@ function renderTodoList(){
                         <div class="dot">&#9679;</div>
                         <div class="dot">&#9679;</div>
                     </div>
+
+                    <div class="js-trashBin trashBin">&#128465;</div>
                     
                 </div>
             </div>
@@ -128,11 +132,14 @@ function renderTodoList(){
         })
     }
 
-    
+    document.querySelectorAll('.js-trashBin').forEach((bin, index)=>{
+        bin.addEventListener('click', ()=>{
+            activeList.tasks.splice(index, 1)
+            renderTodoList()
+        })
+    })
 
-
-
-}
+}}
 
 function addEventListenerCheckBox(tasks){
     //Compleyed Task checkbox
