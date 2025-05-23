@@ -82,6 +82,8 @@ function renderTodoList(){
                     <input type="checkbox" class="js-checkBox checkBox" ${ sortedTasks[i].completed ? "checked" : ""}>
 
                     <p>${sortedTasks[i].name}</p>
+                    <p>${sortedTasks[i].description !== '' ? '|' : ''}</p>
+                    <p class="desc">${sortedTasks[i].description}</p>
                     
                 </div>
 

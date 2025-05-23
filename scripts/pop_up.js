@@ -3,6 +3,7 @@ function hideInputPopUp(){
 }
 
 const taskInput = document.querySelector('.js-taskInput');
+const taskInputDesc = document.querySelector('.js-taskInputDesc')
 
 
 //add Task - popup
@@ -23,12 +24,14 @@ confirmAddTaskBtn.addEventListener('click', ()=>{
 
 function confirmAddTask(){
     const taskName = taskInput.value
+    const taskDesc = taskInputDesc.value
 
-    const task = {name :taskName, description: '', stared: false, completed: false};
+    const task = {name :taskName, description: taskDesc, stared: false, completed: false};
 
     activeList.tasks.push(task);  
 
     taskInput.value = '';
+    taskInputDesc.value = ''
 
     hideInputPopUp()
 }

@@ -270,3 +270,9 @@ body.showSideBar{
     background-color: rgb(58, 153, 76);
     
 }
+
+/*Task Descitpion*/
+.desc{
+    color: rgb(0, 0, 0, 0.6);
+    font-size: 12px;
+}
