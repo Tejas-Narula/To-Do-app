@@ -34,7 +34,7 @@ body.showSideBar{
     
     margin: var(--space);
     background-color: rgb(39, 39, 39);
-    height: calc(100vh - var(--space)*2);
+    height: calc(100svh - var(--space)*2);
     display: flex;
     position: relative;
     margin-left: calc(var(--sideBarWidth) + var(--space));

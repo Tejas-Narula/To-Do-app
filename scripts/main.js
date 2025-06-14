@@ -6,23 +6,25 @@ const heading = document.querySelector('.js-heading')
 
 //setItem("lists", JSON.stringify(lists))
 
-const lists = JSON.parse(localStorage.getItem("lists"))||[{"heading":"Daily","showCompletedTasks":true,"tasks":[{"name":"Gym","description":"","stared":true,"completed":false},{"name":"Study","description":"","stared":false,"completed":false},{"name":"Drink water","description":"","stared":false,"completed":true}]}];
+const lists = JSON.parse(localStorage.getItem("lists"))||[{"heading":"Daily","showCompletedTasks":true,"tasks":[{"name":"Gym","description":"You Got This","stared":true,"completed":false},{"name":"Study","description":"","stared":false,"completed":false},{"name":"Drink water","description":"","stared":false,"completed":true}]},{"heading":"Monthly","showCompletedTasks":true,"tasks":[{"name":"Water Bill","description":"Due","stared":false,"completed":false},{"name":"Electricity Bill","description":"","stared":false,"completed":false}]}];
 
+let activeListIndex = parseInt(JSON.parse(localStorage.getItem('activeListIndex'))) || 0
 let activeList
-setActiveList(0)
+setActiveList(activeListIndex)
+
 function setActiveList(index){
     activeList = lists[index]
 }
 
 
-
+localStorage.setItem("activeListIndex", '0');
 
 
 
 function renderSideBar(){
     let sideBarListsHtml = ''
     lists.forEach((list, index) =>{
-        html = `<div class="list" onClick="setActiveList('${index}'); renderTodoList()"> <p>${list.heading}</p><div class="js-trashBinList trashBinList">&#128465;</div> </div>`
+        html = `<div class="list" onClick="setActiveList('${index}');renderTodoList();"> <p>${list.heading}</p><div class="js-trashBinList trashBinList"><img src="Graphics/trash-1.png"></div> </div>`
         sideBarListsHtml += html
     })
 
@@ -50,6 +52,7 @@ renderTodoList()
 }
 // render todo list by creating the html and putting it on the page
 function renderTodoList(){
+    localStorage.setItem("activeListIndex", JSON.stringify(lists.indexOf(activeList)));
     if (lists.length === 0){
         return
     }
@@ -98,7 +101,7 @@ function renderTodoList(){
                         <div class="dot">&#9679;</div>
                     </div>
 
-                    <div class="js-trashBin trashBin">&#128465;</div>
+                    <div class="js-trashBin trashBin"> <img src="Graphics/trash-1.png"> </div>
                     
                 </div>
             </div>
@@ -128,6 +131,7 @@ function renderTodoList(){
 
 
     localStorage.setItem("lists", JSON.stringify(lists))
+    
 
     //line between completed and non completed tasks
     if (sortedTasks.length >= 1 && completedTasks.length > 0){

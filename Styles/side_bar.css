@@ -31,7 +31,7 @@
     display: block;
     position: fixed;
     width: var(--sideBarWidth);
-    height: calc(100vh - var(--space)*2);
+    height: calc(100svh - var(--space)*2);
     background-color: #19191a;
     z-index: 1000;
     left: -240px;
@@ -94,22 +94,30 @@
 }
 
 .list{
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
-    padding: 7px 10px;
+    padding: 0px 5px 0px 10px;
     user-select: none;
     cursor: pointer;
+    transition: ease-in-out 0.2s
+    
 }
 
 .list:hover{
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .list p{
     margin: 0;
     text-align: center;
+    font-size: 15px;
+}
+
+.list:hover p + .trashBinList img{
+    color: red;
+    display: block;
 }
